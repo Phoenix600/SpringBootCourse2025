@@ -1,4 +1,4 @@
-package com.example3.beans;
+package com.example2.beans;
 
 public class Vehicle {
     private String name;

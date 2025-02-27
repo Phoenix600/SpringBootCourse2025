@@ -1,7 +1,7 @@
 package com.example3.main;
 
-import com.example3.beans.Vehicle;
-import com.example3.config.ProjectConfig;
+import com.example2.beans.Vehicle;
+import com.example2.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Example3 {

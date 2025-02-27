@@ -1,6 +1,6 @@
-package com.example3.config;
+package com.example2.config;
 
-import com.example3.beans.Vehicle;
+import com.example2.beans.Vehicle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
