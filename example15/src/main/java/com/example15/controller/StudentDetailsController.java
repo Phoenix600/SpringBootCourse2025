@@ -53,12 +53,13 @@ public class StudentDetailsController
 //
 //	}
 
-//	// PUT http://localhost:8080/api/v1/studentDetails/{id}
-//	@PutMapping("{id}")
-//	StudentDetails updateStudentDetails(@PathVariable("id") Long id, @RequestBody StudentDetails studentDetails)
-//	{
-//
-//	}
+	// PUT http://localhost:8080/api/v1/studentDetails/{id}
+	@PutMapping("{id}")
+	StudentDetails updateStudentDetails(@PathVariable("id") Long id, @RequestBody StudentDetails studentDetails)
+	{
+		StudentDetails updatedStudentDetails =  studentDetailsService.update(id,studentDetails);
+		return updatedStudentDetails;
+	}
 	
 //	// PATCH http://localhost:8080/api/v1/studentDetails/{id}
 //	@PatchMapping("{id}")

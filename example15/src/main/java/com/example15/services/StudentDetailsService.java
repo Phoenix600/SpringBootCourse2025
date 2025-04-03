@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * File Name: StudentDetailsSerice.java
  * Entity: StudentDetailsSerice
@@ -27,6 +29,32 @@ public class StudentDetailsService
 	{
 		StudentDetails savedStudent =  repository.save(studentDetails);
 		return savedStudent;
+	}
+	
+	public StudentDetails update(Long id, StudentDetails studentDetails)
+	{
+		
+		// select * from student_details where id= 3;
+		Optional<StudentDetails> studentOptional =  repository.findById(id);
+		
+		if(studentOptional.isPresent())
+		{
+			StudentDetails student = studentOptional.get();
+			
+			String newEmail = studentDetails.getEmail();
+			student.setEmail(newEmail);
+			
+			String newFirstName = studentDetails.getFirstName();
+			student.setFirstName(newFirstName);
+			
+			String newLastName = studentDetails.getLastName();
+			student.setLastName(newLastName);
+			
+			student =  repository.save(student);
+			return student;
+		}
+		
+		return null;
 	}
 	
 }
