@@ -25,18 +25,20 @@ public class StudentDetailsController
 	StudentDetailsService studentDetailsService;
 	
 	// GET http://localhost:8080/api/v1/studentDetails/all
-//	@GetMapping("all")
-//	List<StudentDetails> getAllStudentDetails()
-//	{
+	@GetMapping("all")
+	List<StudentDetails> getAllStudentDetails()
+	{
+		List<StudentDetails> studentDetailsList = studentDetailsService.getListOfStudents();
+		return studentDetailsList;
+	}
 //
-//	}
-//
-//	// GET http://localhost:8080/api/v1/studentDetails/{id}
-//	@GetMapping("{id}")
-//	StudentDetails getStudentById(Long id)
-//	{
-//
-//	}
+	// GET http://localhost:8080/api/v1/studentDetails/{id}
+	@GetMapping("{id}")
+	StudentDetails getStudentById(@PathVariable("id") Long myStudentId)
+	{
+		StudentDetails details = studentDetailsService.getStudentById(myStudentId);
+		return details;
+	}
 	
 	// POST http://localhost:8080/api/v1/studentDetails/create
 	@PostMapping("create")

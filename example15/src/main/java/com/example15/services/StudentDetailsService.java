@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -55,6 +57,27 @@ public class StudentDetailsService
 		}
 		
 		return null;
+	}
+	
+	public List<StudentDetails> getListOfStudents()
+	{
+		// Returns the all student_details records from database table in the form of list
+		List<StudentDetails> studentDetailsList = repository.findAll();
+		return studentDetailsList;
+	}
+	
+	public StudentDetails getStudentById(Long studentId)
+	{
+		Optional<StudentDetails> studentDetailsOptional = repository.findById(studentId);
+		
+		StudentDetails data = null;
+		
+		if(studentDetailsOptional.isPresent())
+		{
+			data = studentDetailsOptional.get();
+		}
+		
+		return data;
 	}
 	
 }
