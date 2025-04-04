@@ -82,7 +82,63 @@ public class StudentDetailsService
 	
 	public void deleteStudent(Long id)
 	{
-		repository.deleteById(id);
+		Optional<StudentDetails> studentDetailsOptional = repository.findById(id);
+		if(studentDetailsOptional.isPresent())
+		{
+			repository.delete(studentDetailsOptional.get());
+			return;
+		}
 	}
+	
+	public StudentDetails partialUpdate(Long id, StudentDetails studentBody)
+	{
+		Optional<StudentDetails> studentDetailsOptional = repository.findById(id);
+		
+		if(studentDetailsOptional.isPresent())
+		{
+			StudentDetails student = studentDetailsOptional.get();
+			
+			if(null != studentBody)
+			{
+				if(null != studentBody.getEmail())
+				{
+					String email = studentBody.getEmail();
+					student.setEmail(email);
+				}
+				
+				if(null != studentBody.getLastName())
+				{
+					String lastName = studentBody.getLastName();
+					student.setLastName(lastName);
+				}
+				
+				if(null != studentBody.getFirstName())
+				{
+					String firstName = studentBody.getFirstName();
+					student.setFirstName(firstName);
+				}
+				
+				StudentDetails savedStudent =  repository.save(student);
+				return savedStudent;
+			}
+		}
+		
+		return  null;
+	}
+	
+	
+	public List<StudentDetails> saveAllStudentDetails(List<StudentDetails> studentDetailsList)
+	{
+		List<StudentDetails> result = null;
+		
+		if(null != studentDetailsList)
+		{
+			result = repository.saveAll(studentDetailsList);
+		}
+		
+		return result;
+	}
+	
+	
 	
 }

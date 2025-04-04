@@ -64,10 +64,19 @@ public class StudentDetailsController
 	}
 	
 //	// PATCH http://localhost:8080/api/v1/studentDetails/{id}
-//	@PatchMapping("{id}")
-//	StudentDetails partialUpdateStudentDetails(@PathVariable("id") Long id, @RequestBody StudentDetails studentDetails)
-//	{
-//
-//	}
+	@PatchMapping("{id}")
+	StudentDetails partialUpdateStudentDetails(@PathVariable("id") Long id, @RequestBody StudentDetails studentDetails)
+	{
+		StudentDetails studentDetails1 =  studentDetailsService.partialUpdate(id,studentDetails);
+		return studentDetails1;
+	}
+	
+	// POST http://localhost:8080/api/v1/studentDetails/saveAll
+	@PostMapping("saveAll")
+	List<StudentDetails> createAllStudentDetails(@RequestBody List<StudentDetails> students)
+	{
+		List<StudentDetails> result = studentDetailsService.saveAllStudentDetails(students);
+		return  result;
+	}
 	
 }
