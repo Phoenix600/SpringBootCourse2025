@@ -80,4 +80,9 @@ public class StudentDetailsService
 		return data;
 	}
 	
+	public void deleteStudent(Long id)
+	{
+		repository.deleteById(id);
+	}
+	
 }

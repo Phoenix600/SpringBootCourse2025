@@ -48,12 +48,12 @@ public class StudentDetailsController
 		 return studentDetails;
 	}
 	
-//	// DELETE http://localhost:8080/api/v1/studentDetails/{id}
-//	@DeleteMapping("{id}")
-//	String deleteStudentById(@PathVariable("id") Long id)
-//	{
-//
-//	}
+	// DELETE http://localhost:8080/api/v1/studentDetails/{id}
+	@DeleteMapping("{id}")
+	void deleteStudentById(@PathVariable("id") Long id)
+	{
+		studentDetailsService.deleteStudent(id);
+	}
 
 	// PUT http://localhost:8080/api/v1/studentDetails/{id}
 	@PutMapping("{id}")
