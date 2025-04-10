@@ -71,12 +71,23 @@ public class StudentDetailsController
 		return studentDetails1;
 	}
 	
-	// POST http://localhost:8080/api/v1/studentDetails/saveAll
-	@PostMapping("saveAll")
+	 
 	List<StudentDetails> createAllStudentDetails(@RequestBody List<StudentDetails> students)
 	{
 		List<StudentDetails> result = studentDetailsService.saveAllStudentDetails(students);
 		return  result;
+	}
+	
+	@GetMapping("/getByFirstName/{firstName}")
+	List<StudentDetails> getStudentByFirstName(@PathVariable("firstName") String firstName)
+	{
+		return studentDetailsService.getStudentByFirstName(firstName);
+	}
+	
+	@GetMapping("/getByLastName/{lastName}")
+	List<StudentDetails> getStudentByLastName(@PathVariable("lastName") String lastName)
+	{
+		return studentDetailsService.getStudentByLastName(lastName);
 	}
 	
 }

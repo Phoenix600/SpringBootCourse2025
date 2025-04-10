@@ -140,5 +140,13 @@ public class StudentDetailsService
 	}
 	
 	
+	public List<StudentDetails> getStudentByFirstName(String firstName) {
+		
+		return repository.findByFirstName(firstName);
+	}
 	
+	public List<StudentDetails> getStudentByLastName(String lastName) {
+		
+		return repository.findByLastName(lastName);
+	}
 }
