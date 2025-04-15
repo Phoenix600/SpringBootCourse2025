@@ -3,6 +3,7 @@ package com.example15.services;
 import com.example15.controller.StudentDetailsController;
 import com.example15.domain.StudentDetails;
 import com.example15.repository.StudentDetailsRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Optional;
  * Description:
  */
 
+@Slf4j
 @Service
 public class StudentDetailsService
 {
@@ -61,6 +63,7 @@ public class StudentDetailsService
 	
 	public List<StudentDetails> getListOfStudents()
 	{
+		log.info("StudentService GetListOfStudents called");
 		// Returns the all student_details records from database table in the form of list
 		List<StudentDetails> studentDetailsList = repository.findAll();
 		return studentDetailsList;
@@ -148,5 +151,11 @@ public class StudentDetailsService
 	public List<StudentDetails> getStudentByLastName(String lastName) {
 		
 		return repository.findByLastName(lastName);
+	}
+	
+	
+	public List<String> getFirstNamesByLastName(String lastName) {
+		
+		return repository.findFirstNameByLastName(lastName);
 	}
 }

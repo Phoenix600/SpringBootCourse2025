@@ -2,6 +2,7 @@ package com.example15.controller;
 
 import com.example15.domain.StudentDetails;
 import com.example15.services.StudentDetailsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * Description:
  */
 
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/studentDetails/")
 public class StudentDetailsController
@@ -28,6 +29,11 @@ public class StudentDetailsController
 	@GetMapping("all")
 	List<StudentDetails> getAllStudentDetails()
 	{
+		log.info("getAllStudentDetails Info");
+		log.error("getAllStudentDetails Error");
+		log.debug("getAllStudentDetails Debug");
+		log.trace("getAllStudentDetails Trace");
+		
 		List<StudentDetails> studentDetailsList = studentDetailsService.getListOfStudents();
 		return studentDetailsList;
 	}
@@ -90,4 +96,9 @@ public class StudentDetailsController
 		return studentDetailsService.getStudentByLastName(lastName);
 	}
 	
+	@GetMapping("/getByFirstNames/{lastName}")
+	List<String> getFirstNamesByLastName(@PathVariable("lastName") String lastName)
+	{
+		return studentDetailsService.getFirstNamesByLastName(lastName);
+	}
 }
